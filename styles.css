@@ -1,0 +1,101 @@
+:root{
+    --clippy: polygon(0 0,0 0, 0 100%, 0% 100%)
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppis', sans-serif;
+    background-color: #f2f2f2;
+    /* Para tomar toda la altura de la ventana grafica */
+    height: 100vh;
+    display: flex;
+}
+
+.texts{
+    /* Margin auto centra vertical y horizontalmente por el body que seria su padre ocupa toda la altura con el height: 100vh */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.name{
+    font-size: 3rem;
+    margin-bottom: .5em;
+}
+
+.paragraph{
+    font-size: 2rem;
+    font-weight: normal;
+    --clippy: circle(0% at 50% 50%);
+}
+
+.item{
+    position: relative;
+    padding-left: 1rem;
+    transition: color .1s;
+}
+
+.item::before{
+    content: "";
+    display: block;
+    background: slateblue;
+    width: 120%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    clip-path: var(--clippy);
+    transition: clip-path 2s
+}
+
+.paragraph::before{
+    background: #F86D70;
+}
+
+.name:hover::before{
+    clip-path: polygon(0 0, 90% 0%, 100% 100%, 0% 100%);
+}
+
+.name:hover + .paragraph::before{
+    clip-path: circle(150% at 50% 50%);
+    transition: clip-path 1.5s 2s;
+}
+
+.name:hover,
+.name:hover + .paragraph{
+    color: #ffff
+}
+
+
+/* .item{
+    /* background: tomato; */
+    /* width: 200px; */
+    /* height: 200px; */
+    /* margin: 20px; */
+    /* transition: background-color, width 2s; */
+    /* clip-path: circle(50% at top left); */
+    /* transition-property: clip-path; */
+    /* transition-duration: 2s; */
+    /* transition-timing-function: ease-out; */
+    /* transition-delay: lo que tarda en ejecutarse la transicion */
+    /* transition-delay: 2s; */
+
+    /* ease | ease-in | ease-in-out | ease-out | linear 
+
+} */
+
+/* Cambia de color cuando pones el mouse sobre el item */
+/* .container:hover .item{
+    /* background: steelblue; */
+    /* La transition será para el background color y durará 2s */
+    /* transition: background-color 2s; */
+    /* width: 400px; */
+    /* clip-path: circle(150% at top left); 
+} */
